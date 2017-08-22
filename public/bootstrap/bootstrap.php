@@ -13,10 +13,13 @@ $template = new Template;
 
 $twig=$template->init();
 
+$twig->addFunction($site_url);
+
 $callController = new App\Controllers\Controller;
 $calledController = $callController->controller();
 $controller = new $calledController();
 $controller->setTwig($twig);
+
 
 
 /**

@@ -5,12 +5,112 @@
         <title>{{ titulo }}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/componentable.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/componenbutton.css">
-
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/table.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/button.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/form.css">
+        <link rel="stylesheet" type="text/css" href="{{ site_url() }}/assets/css/style.css">
+        <script type="text/javascript" src="{{ site_url() }}/assets/js/boxOver.js"></script>
     </head>
     
     <body>
+        <div id="main_container" >
+            
+            <div class="top_bar"><!--include do top -->
+                <div id="main_content">
+                    <div id="menu_tab">
+                     
+                        
+                    </div>
+                    
+                    <div class="crumb_navigation"></div>
+                    <div class="left_content">
+                        
+                        <div class="title_box">Categorias</div>
+                        <ul class="left_menu">
+                            <!-- include left menu -->
+                            
+                            
+                            
+                        </ul>
+                        <div class="title_box">Promoção</div>
+                        
+                        <div class="border_box">
+                            <div class="product_title"> nome do produto</div>
+                            <div class="product_image">imagem do produto em promoçao</div>
+                            <div class="prod_price">
+                                preço do produto
+                            </div>
+                            
+                        </div>
+                        <div class="title_box">News Letter</div>
+                        <div class="border_box">
+                            
+                            <input type="text" name="newsletter" class="newsletter" value="Seu Email">
+                            <a href="" class="join">cadastrar email</a>
+                            <div class="banner_adds">
+                                <a href="">
+                                    
+                                    Banner promoçao propaganda
+                                </a>
+                            </div>
+                        </div>
+                        <div class="center_content">
+                            {%block content %}{% endblock %}
+                        </div>
+                        
+                        <div class="right_content">
+                            <div class="shopping_cart">
+                                <div class="cart_title">Carrinho de Compras</div>
+                                <div class="cart_details">
+                                    <span id="products_cart">Numero de produtos no carrinho</span> <br>
+                                    <span class="border_cart"></span>Total: <span class="price">Total de compras do carrinho</span>
+                                </div>
+                                
+                                <div class="cart_icon">
+                                    <a href="" title="header=[Checkout] body=[&nbsp;] fade=[on]"></a>
+                                    <!-- icone do carrinho-->
+                                </div>
+                                <div class="title_box">Novidades</div>
+                                <div class="border_box">
+                                    <div class="product_title"><!--titulo produto novidade--></div>
+                                    <div class="product_image"><!--imagem do produto que esta em nivodade--></div>
+                                    <div class="prod_price">
+                                        <div class="price">Preço do produto que e novidade </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title_box">Marcas</div>
+                            <!--include das marcas -->
+                            <div class="banner_adds">
+                                banner de promoçao, propaganda
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="footer">
+                    <div class="left_footer">
+                        <!--imagem footer-->
+                        
+                    </div>
+                    <div class="center_footer">
+                        Loja Breno William. Todos direitos reservados {{ 'now' | date('d/m/Y')  }} <br>
+                        <!-- imagem da loja -->
+                        
+                    </div>
+                    <div class="right_footer">
+                        <a href="#">Home</a> <a href="#">About</a> <a href="#">sitemap</a> <a href="#">rss</a>
+                        
+                        
+                    </div>
+                </div>
+                
+                    
+            </div>
+            <script type="text/javascript" src="{{ site_url() }}/bower_components/jquery/dist/jquery.js"></script>
+            <script type="text/javascript" src="{{ site_url() }}/assets/js/site/carrinho.js"></script>
+
+        </div>
         
     </body>
 </html>
