@@ -34,7 +34,7 @@ class TypePdoDatabase implements InterfaceTypeDatabase {
         
     }
     public function fetch(){
-        $this->objectPdo->fetch();
+        return  $this->objectPdo->fetch();
             
     }
     public function fetchAll(){

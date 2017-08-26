@@ -8,86 +8,85 @@
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/table.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/button.css">
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/form.css">
-        <link rel="stylesheet" type="text/css" href="{{ site_url() }}/assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="{{ site_url() }}/assets/css/style2.css">
         <script type="text/javascript" src="{{ site_url() }}/assets/js/boxOver.js"></script>
     </head>
     
     <body>
         <div id="main_container" >
             
-            <div class="top_bar"><!--include do top -->
+           
+                <!--include do top -->
+                {% include 'includes/site_header.html' %}
                 <div id="main_content">
                     <div id="menu_tab">
+                        {% include 'includes/site_menu.html' %}
                      
                         
                     </div>
                     
-                    <div class="crumb_navigation"></div>
+                    <div class="crumb_navigation">
+                        {{ breadCrumb() |raw }}
+                        
+                        
+                        
+                    </div>
                     <div class="left_content">
                         
                         <div class="title_box">Categorias</div>
                         <ul class="left_menu">
-                            <!-- include left menu -->
                             
-                            
+                            {% include 'includes/site_left_menu.html' %}
                             
                         </ul>
                         <div class="title_box">Promoção</div>
                         
                         <div class="border_box">
-                            <div class="product_title"> nome do produto</div>
-                            <div class="product_image">imagem do produto em promoçao</div>
-                            <div class="prod_price">
-                                preço do produto
+                            {% for promocao in promocao() %}
+                            <div class="product_title">{{promocao.produto_nome}}</div>
+
+                            <div class="product_image">
+                                <img src="{{ site_url }}/{{ promocao.produto_foto }} " width="90" height="90">
                             </div>
-                            
+                            <div class="prod_price">
+                                {% if (promocao.produto_promocao)==1 %}
+                                <span class="reduce" >
+                                        
+                                        
+                                    R$ {{ promocao.produto_valor | number_format(2,',','.') }}
+                                </span>
+                                    R$ {{ promocao.produto_valor_promocao | number_format(2,',','.') }}
+                        
+
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+
                         </div>
                         <div class="title_box">News Letter</div>
                         <div class="border_box">
                             
                             <input type="text" name="newsletter" class="newsletter" value="Seu Email">
                             <a href="" class="join">cadastrar email</a>
-                            <div class="banner_adds">
+                        </div>
+                        <div class="banner_adds">
                                 <a href="">
                                     
-                                    Banner promoçao propaganda
+                                    <img src="{{ site_url() }}/assets/images/bann2.jpg" alt="" border="0"/>
                                 </a>
-                            </div>
-                        </div>
-                        <div class="center_content">
-                            {%block content %}{% endblock %}
-                        </div>
-                        
-                        <div class="right_content">
-                            <div class="shopping_cart">
-                                <div class="cart_title">Carrinho de Compras</div>
-                                <div class="cart_details">
-                                    <span id="products_cart">Numero de produtos no carrinho</span> <br>
-                                    <span class="border_cart"></span>Total: <span class="price">Total de compras do carrinho</span>
-                                </div>
-                                
-                                <div class="cart_icon">
-                                    <a href="" title="header=[Checkout] body=[&nbsp;] fade=[on]"></a>
-                                    <!-- icone do carrinho-->
-                                </div>
-                                <div class="title_box">Novidades</div>
-                                <div class="border_box">
-                                    <div class="product_title"><!--titulo produto novidade--></div>
-                                    <div class="product_image"><!--imagem do produto que esta em nivodade--></div>
-                                    <div class="prod_price">
-                                        <div class="price">Preço do produto que e novidade </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="title_box">Marcas</div>
-                            <!--include das marcas -->
-                            <div class="banner_adds">
-                                banner de promoçao, propaganda
-                            </div>
                         </div>
                     </div>
+                    <div class="center_content">
+                            {%block site_content %}{% endblock %}
+                    </div>
+                        
+                    <div class="right_content">
+                        {% include 'includes/site_right_menu.html' %}
+
+                    </div>
+                    </div>
                     
-                </div>
+                
                 <div class="footer">
                     <div class="left_footer">
                         <!--imagem footer-->
@@ -106,7 +105,7 @@
                 </div>
                 
                     
-            </div>
+         
             <script type="text/javascript" src="{{ site_url() }}/bower_components/jquery/dist/jquery.js"></script>
             <script type="text/javascript" src="{{ site_url() }}/assets/js/site/carrinho.js"></script>
 
